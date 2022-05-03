@@ -2,7 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import s from './Statistics.module.css';
 
-export const Statistics = ({ stats: { good, neutral, bad } }) => (
+export const Statistics = ({
+  stats: { good, neutral, bad },
+  total,
+  positivePercentage,
+}) => (
   <div>
     <ul className={s.List}>
       <li className={s.Item}>
@@ -15,9 +19,18 @@ export const Statistics = ({ stats: { good, neutral, bad } }) => (
         Bad:&ensp;<span className={s.Number}>{bad}</span>
       </li>
     </ul>
+    <p className={s.Computed}>
+      Total:&ensp;<span className={s.Number}>{total}</span>
+    </p>
+    <p className={s.Computed}>
+      Positive feedback:&ensp;
+      <span className={s.Number}>{positivePercentage}%</span>
+    </p>
   </div>
 );
 
 Statistics.propTipes = {
   stats: PropTypes.objectOf(PropTypes.number).isRequired,
+  total: PropTypes.number.isRequired,
+  positivePercentage: PropTypes.number.isRequired,
 };
