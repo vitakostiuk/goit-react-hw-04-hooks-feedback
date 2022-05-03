@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { FeedbackButtons } from './FeedbackButtons';
+import { FeedbackOptions } from './FeedbackOptions';
 import { Statistics } from './Statistics';
 import { Notification } from './Notification';
 import { Section } from './Section';
@@ -14,7 +14,7 @@ export const Feedback = ({
   return (
     <div className={s.Container}>
       <Section title="Please leave feedback">
-        <FeedbackButtons onFeedback={handleFeedback} />
+        <FeedbackOptions onFeedback={handleFeedback} />
       </Section>
 
       <Section title="Statistics">

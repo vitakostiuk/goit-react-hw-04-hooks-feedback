@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import s from './FeedbackButtons.module.css';
+import s from './FeedbackOptions.module.css';
 
-export const FeedbackButtons = ({ onFeedback }) => (
+export const FeedbackOptions = ({ onFeedback }) => (
   <div className={s.Container}>
     <button type="button" id="good" onClick={onFeedback} className={s.Button}>
       Good
@@ -21,6 +21,6 @@ export const FeedbackButtons = ({ onFeedback }) => (
   </div>
 );
 
-FeedbackButtons.propTypes = {
+FeedbackOptions.propTypes = {
   onFeedback: PropTypes.func.isRequired,
 };
