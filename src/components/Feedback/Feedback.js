@@ -11,10 +11,11 @@ export const Feedback = ({
   totalFeedback,
   positivePercentage,
 }) => {
+  const options = Object.keys({ good, neutral, bad });
   return (
     <div className={s.Container}>
       <Section title="Please leave feedback">
-        <FeedbackOptions onFeedback={handleFeedback} />
+        <FeedbackOptions options={options} onFeedback={handleFeedback} />
       </Section>
 
       <Section title="Statistics">

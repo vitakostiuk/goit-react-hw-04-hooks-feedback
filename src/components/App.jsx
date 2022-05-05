@@ -8,24 +8,10 @@ export class App extends Component {
     bad: 0,
   };
 
-  handleFeedback = e => {
-    if (e.target.id === 'good') {
-      this.setState(prevState => ({
-        good: prevState.good + 1,
-      }));
-    }
-
-    if (e.target.id === 'neutral') {
-      this.setState(prevState => ({
-        neutral: prevState.neutral + 1,
-      }));
-    }
-
-    if (e.target.id === 'bad') {
-      this.setState(prevState => ({
-        bad: prevState.bad + 1,
-      }));
-    }
+  handleFeedback = option => {
+    this.setState(prevState => ({
+      [option]: prevState[option] + 1,
+    }));
   };
 
   countTotalFeedback = ({ good, neutral, bad }) => {
