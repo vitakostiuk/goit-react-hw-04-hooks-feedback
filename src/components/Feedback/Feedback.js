@@ -22,8 +22,8 @@ export const Feedback = ({
         {good || neutral || bad ? (
           <Statistics
             stats={{ good, neutral, bad }}
-            total={totalFeedback({ good, neutral, bad })}
-            positivePercentage={positivePercentage({ good, neutral, bad })}
+            total={totalFeedback(good, neutral, bad)}
+            positivePercentage={positivePercentage(good, neutral, bad)}
           />
         ) : (
           <Notification message={'There is no feedback'} />

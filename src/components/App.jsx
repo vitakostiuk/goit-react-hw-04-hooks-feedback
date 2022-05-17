@@ -1,43 +1,48 @@
-import React, { Component } from 'react';
+import { useState } from 'react';
 import { Feedback } from './Feedback';
 
-export class App extends Component {
-  state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
+export const App = () => {
+  const [good, setGood] = useState(0);
+  const [neutral, setNeutral] = useState(0);
+  const [bad, setBad] = useState(0);
+
+  const handleFeedback = option => {
+    switch (option) {
+      case 'good':
+        setGood(prevState => prevState + 1);
+        break;
+
+      case 'neutral':
+        setNeutral(prevState => prevState + 1);
+        break;
+
+      case 'bad':
+        setBad(prevState => prevState + 1);
+        break;
+
+      default:
+        return;
+    }
   };
 
-  handleFeedback = option => {
-    console.log(option);
-    this.setState(prevState => ({
-      [option]: prevState[option] + 1,
-    }));
-  };
-
-  countTotalFeedback = ({ good, neutral, bad }) => {
+  const countTotalFeedback = (good, neutral, bad) => {
     const total = good + neutral + bad;
     return total;
   };
 
-  countPositiveFeedbackPercentage = ({ good, neutral, bad }) => {
+  const countPositiveFeedbackPercentage = (good, neutral, bad) => {
     const feedbackPercentage = (good * 100) / (good + neutral + bad);
     return Math.round(feedbackPercentage);
   };
 
-  render() {
-    const { good, neutral, bad } = this.state;
-    return (
-      <>
-        <Feedback
-          feedbacks={this.state}
-          handleFeedback={this.handleFeedback}
-          totalFeedback={() => this.countTotalFeedback({ good, neutral, bad })}
-          positivePercentage={() =>
-            this.countPositiveFeedbackPercentage({ good, neutral, bad })
-          }
-        />
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <Feedback
+        feedbacks={{ good, neutral, bad }}
+        handleFeedback={handleFeedback}
+        totalFeedback={countTotalFeedback}
+        positivePercentage={countPositiveFeedbackPercentage}
+      />
+    </>
+  );
+};
